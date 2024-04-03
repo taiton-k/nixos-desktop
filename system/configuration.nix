@@ -25,16 +25,36 @@
 
         boot = {
                 loader = {
-                        systemd-boot.enable = true;
+                        # systemd-boot.enable = true;
                         efi.canTouchEfiVariables = true;
                 };
                 kernelPackages = pkgs.linuxKernel.packages.linux_zen;
         };
 
 
-        networking.hostName = "nixos-desktop";
+	hardware.opengl.enable = true;
+
+
+	networking = {
+                networkmanager.enable = true;
+                hostName = "nixos-desktop";
+	};
+
 
         console.keyMap = "jp106";
+
+	i18n.defaultLocale = "ja_JP.UTF-8";
+
+
+	zramSwap = {
+	        enable = true;
+                memoryPercent = 200;
+	};
+
+        swapDevices = [{
+                device = "/swapfile";
+                size = 16 * 1024;
+        }];
 
 
         sound.enable = true;

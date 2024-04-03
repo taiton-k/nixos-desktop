@@ -10,10 +10,10 @@
                         input = {
                                 kb_layout = "jp";
                         };
-                        monitor = ", 1920x1080, auto, 1";
+                        monitor = "eDP-1, 1920x1080, auto, 1";
                         env = [
                                  "NIXOS_OZONE_WL, 1"
-				 "WLR_NO_HARDWARE_CURSORS, 1"
+				 # "WLR_NO_HARDWARE_CURSORS, 1"
                         ];
                         "$mod" = "WIN";
                         exec-once = [
