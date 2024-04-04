@@ -1,6 +1,6 @@
 {
 	imports = [
-		./hyprland.nix
+		./wayland
 		./git.nix
 	        ./alacritty.nix
                 ./foot.nix

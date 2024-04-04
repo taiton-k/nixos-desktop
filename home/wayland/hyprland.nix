@@ -1,9 +1,5 @@
 { pkgs, ... } : {
 
-        home.packages = with pkgs; [
-                swww
-        ];
-
         wayland.windowManager.hyprland = {
                 enable = true;
 		settings = {
@@ -27,7 +23,8 @@
                                 shadow_range = 12;
                                 blur = {
                                         enabled = true;
-                                        size = 8;
+                                        size = 3;
+					passes = 3;
                                 };
                         };
 			animation = [

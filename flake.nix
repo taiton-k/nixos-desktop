@@ -23,7 +23,7 @@
                         nixos-desktop = inputs.nixpkgs.lib.nixosSystem {
                                 system = "x86_64-linux";
                                 modules = [
-                                        ./system/configuration.nix
+                                        ./system
                                 ];
 				specialArgs = {
                                         inherit inputs;
@@ -41,7 +41,7 @@
                                         inherit inputs;
                                 };
                                 modules = [
-                                        ./home/home.nix
+                                        ./home
                                 ];
 
                         };
