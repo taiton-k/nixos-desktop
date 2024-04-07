@@ -15,6 +15,7 @@
                         exec-once = [
                                 "vivaldi"
 				"foot"
+				"mako"
                         ];
                         decoration = {
                                 rounding = 8;

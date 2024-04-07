@@ -16,11 +16,11 @@
         };
 
         nixpkgs.config.allowUnfree = true;
+        # nixpkgs.config.allowUnfreePredicate = _ : true;
 
 
         boot = {
                 loader = {
-                        # systemd-boot.enable = true;
                         efi.canTouchEfiVariables = true;
                 };
                 kernelPackages = pkgs.linuxKernel.packages.linux_zen;
@@ -96,9 +96,11 @@
         services.dbus.enable = true;
         xdg.portal = {
                 enable = true;
-                wlr.enable = true;
-                config.common.default = [
-                        "wlr"
+                extraPortals = with pkgs; [
+                        xdg-desktop-portal-hyprland
+                ];
+		configPackages = with pkgs; [
+                        hyprland
                 ];
         };
 
