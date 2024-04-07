@@ -13,5 +13,8 @@
 
                 ./secureboot.nix
                 inputs.lanzaboote.nixosModules.lanzaboote
+
+                ./xremap.nix
+                inputs.xremap.nixosModules.default
         ];
 }
