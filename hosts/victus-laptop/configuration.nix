@@ -16,7 +16,6 @@
         };
 
         nixpkgs.config.allowUnfree = true;
-        # nixpkgs.config.allowUnfreePredicate = _ : true;
 
 
         boot = {
@@ -42,7 +41,7 @@
 
 	networking = {
                 networkmanager.enable = true;
-                hostName = "nixos-desktop";
+                hostName = "victus-laptop";
 	};
 
 
@@ -150,6 +149,10 @@
                 createHome = true;
                 home = "/home/taiton";
                 isNormalUser = true;
-                extraGroups = [ "wheel" "networkmanager" ];
+                extraGroups = [
+			"wheel"
+			"networkmanager"
+			"input" # For xremap.
+		];
         };
 }

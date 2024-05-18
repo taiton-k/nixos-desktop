@@ -1,14 +1,31 @@
 {
+	outputs = inputs @ { flake-parts, ... } :
+		flake-parts.lib.mkFlake { inherit inputs; } {
+
+			systems = [
+				"x86_64-linux"
+			];
+
+			imports = [
+				./profiles
+				./hosts
+			];
+		};
+
         inputs = {
 
                 nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+		flake-parts.url = "github:hercules-ci/flake-parts";
 
                 home-manager = {
                         url = "github:nix-community/home-manager";
                         inputs.nixpkgs.follows = "nixpkgs";
                 };
+
+
+
+		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
                 lanzaboote = {
                         url = "github:nix-community/lanzaboote/v0.3.0";
@@ -16,37 +33,28 @@
                 };
                 
 		xremap.url = "github:xremap/nix-flake";
-        };
 
-        outputs = inputs : {
 
-                nixosConfigurations = {
-                        nixos-desktop = inputs.nixpkgs.lib.nixosSystem {
-                                system = "x86_64-linux";
-                                modules = [
-                                        ./system
-                                ];
-				specialArgs = {
-                                        inherit inputs;
-				};
-                        };
-                };
 
-                homeConfigurations = {
-                        nixos-desktop = inputs.home-manager.lib.homeManagerConfiguration {
-                                pkgs = import inputs.nixpkgs {
-                                        system = "x86_64-linux";
-                                        config.allowUnfree = true;
-                                };
-                                extraSpecialArgs = {
-                                        inherit inputs;
-                                };
-                                modules = [
-                                        ./home
-                                ];
+		nixpkgs-for-vivaldi.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
 
-                        };
-                };
+		hyprland = {
+			url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+		};
+
+		hyprland-plugins = {
+			url = "github:hyprwm/hyprland-plugins";
+			inputs.hyprland.follows = "hyprland";
+		};
+
+		hyprscroller = {
+			url = "github:dawsers/hyprscroller";
+			inputs.hyprland.follows = "hyprland";
+		};
+
+		hyprfocus = {
+			url = "github:pyt0xic/hyprfocus";
+			inputs.hyprland.follows = "hyprland";
+		};
         };
 }
-

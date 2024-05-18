@@ -1,15 +1,34 @@
-{ pkgs, ... } : {
+{ lib, config, ... } :
+	let
+		cfg = config.modules.git;
+	in {
 
-        programs = {
+	options.modules.git = {
 
-                git = {
-                        enable = true;
-                        userName = "taiton-k";
-                        userEmail = "84013946+taiton-k@users.noreply.github.com";
-                };
+		enable = lib.mkEnableOption "git";
 
-                lazygit = {
-                        enable = true;
-                };
-        };
+		userName = lib.mkOption {
+			type = lib.types.str;
+		};
+
+		userEmail = lib.mkOption {
+			type = lib.types.str;
+		};
+	};
+
+	config = lib.mkIf cfg.enable {
+
+		programs = {
+
+			git = {
+				enable = true;
+				userName = cfg.userName;
+				userEmail = cfg.userEmail;
+			};
+
+			lazygit = {
+				enable = true;
+			};
+		};
+	};
 }
