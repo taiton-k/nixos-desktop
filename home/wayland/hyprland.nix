@@ -86,17 +86,17 @@
 					"easeOutQuad, 0.5, 1, 0.89, 1"
 					"easeOutCubic, 0.33, 1, 0.68, 1"
 					"easeInSine, 0.12, 0, 0.39, 0"
-					"easeOutBack, 0, 0, 0, 1.27"
+					"easeOutBack, 0.71, 1.38, 0.3, 1"
 				];
 
 				animation = [
 					"global, 1, 4, default"
 					"windowsIn, 1, 4, easeOutQuad, popin 80%"
 					"windowsOut, 1, 20, easeOutQuad, popin"
-					"windowsMove, 1, 4, easeOutQuad"
+					"windowsMove, 1, 3, easeOutQuad"
 					"workspaces, 1, 4, easeOutBack, slidefade 20%"
 					"fadeIn, 1, 3, easeInSine"
-					"fadeOut, 1, 4, easeInSine"
+					"fadeOut, 1, 2, easeInSine"
 				];
 
 				plugin = {
