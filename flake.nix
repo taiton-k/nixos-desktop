@@ -39,7 +39,7 @@
 		nixpkgs-for-vivaldi.url = "github:NixOS/nixpkgs/e89cf1c932006531f454de7d652163a9a5c86668";
 
 		hyprland = {
-			url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=v0.41.0&rev=ea2501d4556f84d3de86a4ae2f4b22a474555b9f";
+			url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 		};
 
 		hyprland-plugins = {
